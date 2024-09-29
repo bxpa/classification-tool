@@ -1,0 +1,30 @@
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Specific directories (if you want to ignore their contents)
+# Uncomment if needed
+# classification/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE specific files (uncomment if needed)
+# .vscode/
+# .idea/
+
+# Environment files (if you use virtual environments)
+# venv/
+# .env
+
+# Compiled Python files
+*.pyc
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Log files
+*.log

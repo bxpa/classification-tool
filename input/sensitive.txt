@@ -1,0 +1,11 @@
+Customer ID: 5001
+Name: Alice Brown
+Credit Card Number: 4111-2222-3333-4444
+Expiration Date: 05/26
+CVV: 123
+
+Customer ID: 5002
+Name: Bob Green
+Credit Card Number: 5555-6666-7777-8888
+Expiration Date: 09/25
+CVV: 456
