@@ -17,7 +17,7 @@ Thumbs.db
 # .idea/
 
 # Environment files (if you use virtual environments)
-# venv/
+venv/
 # .env
 
 # Compiled Python files
@@ -28,3 +28,7 @@ Thumbs.db
 
 # Log files
 *.log
+input/
+.streamlit/
+hook-streamlit.py
+run.py

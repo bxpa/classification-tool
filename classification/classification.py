@@ -1,34 +1,35 @@
 import ollama
 import os
-import random
+import streamlit as st
 
-input_folder = 'input'
+INPUT_FOLDER = 'input'
 
 
+@st.cache_data
 def classify_file_content(file_path: str) -> str:
     content = open(file_path).read()
-    prompt = f"""Classify the following text into one of these categories: public, confidential, or sensitive.
+    prompt: str = f"""Classify the following text into one of these categories: public, confidential, or sensitive.
     Only respond with the category name, nothing else.
     Text to classify:
     {content}"""
 
     response = ollama.chat(model="qwen:4b", messages=[
-        {"role": "system", "content": "You are a document classification assistant. Classify documents as public, confidential, or sensitive based on their content. Only respond with the category name."},
+        {"role": "system", "content":
+         "You are a file classification assistant. Classify documents in these categories: public, confidential, or sensitive based on their content. Only respond with a single category name."
+         },
         {"role": "user", "content": prompt}
     ])
 
-    classification = response['message']['content'].strip().lower()
-    valid_categories = ['public', 'confidential', 'sensitive']
-
+    classification: str = response['message']['content'].strip().lower()
+    valid_categories: list = ['public', 'confidential', 'sensitive']
     if classification not in valid_categories:
-        classification = random.choice(valid_categories)
-
+        raise Exception('Could not classify file', 400)
     return classification
 
 
 def main() -> None:
-    files = [os.path.join(input_folder, f) for f in os.listdir(
-        input_folder) if os.path.isfile(os.path.join(input_folder, f))]
+    files = [os.path.join(INPUT_FOLDER, f) for f in os.listdir(
+        INPUT_FOLDER) if os.path.isfile(os.path.join(INPUT_FOLDER, f))]
 
     for file in files:
         try:
